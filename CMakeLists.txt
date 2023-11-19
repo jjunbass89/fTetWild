@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.8)
 project(FloatTetwild)
 ################################################################################
 
+set(GMP_DIR "C:/RND/mpir-3.0.0-he025d50_1002")
+set(GMP_INC "${GMP_DIR}/Library/include")
+set(GMP_LIB "${GMP_DIR}/Library/lib")
+
 # Detects whether this is a top-level project
 get_directory_property(HAS_PARENT PARENT_DIRECTORY)
 if(HAS_PARENT)
