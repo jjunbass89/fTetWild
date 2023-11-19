@@ -48,6 +48,13 @@ if(NOT TARGET igl::core)
 	include(libigl)
 endif()
 
+string(REGEX REPLACE ${_re_match} ${_re_replace}
+	CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+string(REGEX REPLACE ${_re_match} ${_re_replace}
+	CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+string(REGEX REPLACE ${_re_match} ${_re_replace}
+	CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+
 # Geogram
 if(NOT TARGET geogram::geogram)
 	float_tetwild_download_geogram()

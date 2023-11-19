@@ -7,6 +7,15 @@ set(GMP_DIR "C:/RND/mpir-3.0.0-he025d50_1002")
 set(GMP_INC "${GMP_DIR}/Library/include")
 set(GMP_LIB "${GMP_DIR}/Library/lib")
 
+set(_re_match "([\\/\\-]M)D")
+set(_re_replace "\\1T")
+string(REGEX REPLACE ${_re_match} ${_re_replace}
+	CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+string(REGEX REPLACE ${_re_match} ${_re_replace}
+	CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+string(REGEX REPLACE ${_re_match} ${_re_replace}
+	CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+
 # Detects whether this is a top-level project
 get_directory_property(HAS_PARENT PARENT_DIRECTORY)
 if(HAS_PARENT)
