@@ -183,6 +183,20 @@ if(FLOAT_TETWILD_TOPLEVEL_PROJECT)
 	if(NOT (${CMAKE_VERSION} VERSION_LESS "3.6.0"))
 		set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME}_bin)
 	endif()
+
+	add_library(${PROJECT_NAME}_lib src/fTetWild.cpp)
+	target_compile_features(${PROJECT_NAME}_lib PUBLIC ${CXX14_FEATURES})
+
+	target_link_libraries(${PROJECT_NAME}_lib
+		PUBLIC
+			${PROJECT_NAME}
+			CLI11::CLI11
+			warnings::all
+	)
+	
+	if(FLOAT_TETWILD_WITH_SANITIZERS)
+		add_sanitizers(${PROJECT_NAME}_lib)
+	endif()
 endif()
 
 ################################################################################
